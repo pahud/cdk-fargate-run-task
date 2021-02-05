@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.34](https://github.com/pahud/cdk-fargate-run-task/compare/v0.0.33...v0.0.34) (2021-02-05)
+
+
+### Bug Fixes
+
+* add defaultReleaseBranch ([fbd78d5](https://github.com/pahud/cdk-fargate-run-task/commit/fbd78d57f680dd5601d76402a2e8ad571a82b030))
+
 ### [0.0.33](https://github.com/pahud/cdk-fargate-run-task/compare/v0.0.32...v0.0.33) (2021-02-03)
 
 ### [0.0.32](https://github.com/pahud/cdk-fargate-run-task/compare/v0.0.31...v0.0.32) (2021-02-02)
