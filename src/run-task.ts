@@ -58,11 +58,21 @@ export interface RunTaskProps {
    * @default LATEST
    */
   readonly fargatePlatformVersion?: PlatformVersion;
+  /**
+   * fargate security group
+   *
+   * @default - create a default security group
+   */
+  readonly securityGroup?: ec2.SecurityGroup;
 }
 
 export class RunTask extends Construct {
   readonly vpc: ec2.IVpc;
   readonly cluster: ecs.ICluster;
+  /**
+   * fargate task security group
+   */
+  readonly securityGroup: ec2.SecurityGroup;
   constructor(scope: Construct, id: string, props: RunTaskProps) {
     super(scope, id);
 
@@ -72,6 +82,7 @@ export class RunTask extends Construct {
     const task = props.task;
     this.vpc = vpc;
     this.cluster = cluster;
+    this.securityGroup = props.securityGroup ?? new ec2.SecurityGroup(this, 'FargateSecurityGroup', { vpc });
 
     if (props.schedule) {
       new Rule(this, 'ScheduleRule', {
@@ -100,6 +111,7 @@ export class RunTask extends Construct {
               subnets: vpc.selectSubnets({
                 subnetType: ec2.SubnetType.PRIVATE,
               }).subnetIds,
+              securityGroups: [this.securityGroup.securityGroupId],
             },
           },
         },

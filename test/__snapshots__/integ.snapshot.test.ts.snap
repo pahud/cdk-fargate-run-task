@@ -293,6 +293,22 @@ Object {
       },
       "Type": "AWS::IAM::Policy",
     },
+    "RunDemoTaskEveryHourFargateSecurityGroup835CCC01": Object {
+      "Properties": Object {
+        "GroupDescription": "run-task-demo-stack/RunDemoTaskEveryHour/FargateSecurityGroup",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "RunDemoTaskOnceVpc9F46441F",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
     "RunDemoTaskEveryHourScheduleRule4BE2F722": Object {
       "Properties": Object {
         "ScheduleExpression": "cron(0 * * * ? *)",
@@ -365,6 +381,14 @@ Object {
             "networkConfiguration": Object {
               "awsvpcConfiguration": Object {
                 "assignPublicIp": "DISABLED",
+                "securityGroups": Array [
+                  Object {
+                    "Fn::GetAtt": Array [
+                      "RunDemoTaskOnceFargateSecurityGroup33BD37E6",
+                      "GroupId",
+                    ],
+                  },
+                ],
                 "subnets": Array [
                   Object {
                     "Ref": "RunDemoTaskOnceVpcPrivateSubnet1Subnet5876C593",
@@ -419,6 +443,22 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Policy",
+    },
+    "RunDemoTaskOnceFargateSecurityGroup33BD37E6": Object {
+      "Properties": Object {
+        "GroupDescription": "run-task-demo-stack/RunDemoTaskOnce/FargateSecurityGroup",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "RunDemoTaskOnceVpc9F46441F",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
     },
     "RunDemoTaskOnceVpc9F46441F": Object {
       "Properties": Object {
