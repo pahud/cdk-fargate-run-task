@@ -48,7 +48,7 @@ new RunTask(scope: Construct, id: string, props: RunTaskProps)
   * **runAtOnce** (<code>boolean</code>)  run it at once(immediately after deployment). __*Default*__: true
   * **runOnResourceUpdate** (<code>boolean</code>)  run the task again on the custom resource update. __*Default*__: false
   * **schedule** (<code>[Schedule](#aws-cdk-aws-events-schedule)</code>)  run the task with defined schedule. __*Default*__: no shedule
-  * **securityGroup** (<code>[SecurityGroup](#aws-cdk-aws-ec2-securitygroup)</code>)  fargate security group. __*Default*__: create a default security group
+  * **securityGroup** (<code>[ISecurityGroup](#aws-cdk-aws-ec2-isecuritygroup)</code>)  fargate security group. __*Default*__: create a default security group
   * **vpc** (<code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code>)  The VPC for the Amazon ECS task. __*Default*__: create a new VPC or use existing one
 
 
@@ -59,7 +59,7 @@ new RunTask(scope: Construct, id: string, props: RunTaskProps)
 Name | Type | Description 
 -----|------|-------------
 **cluster** | <code>[ICluster](#aws-cdk-aws-ecs-icluster)</code> | <span></span>
-**securityGroup** | <code>[SecurityGroup](#aws-cdk-aws-ec2-securitygroup)</code> | fargate task security group.
+**securityGroup** | <code>[ISecurityGroup](#aws-cdk-aws-ec2-isecuritygroup)</code> | fargate task security group.
 **vpc** | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | <span></span>
 
 
@@ -80,7 +80,7 @@ Name | Type | Description
 **runAtOnce**? | <code>boolean</code> | run it at once(immediately after deployment).<br/>__*Default*__: true
 **runOnResourceUpdate**? | <code>boolean</code> | run the task again on the custom resource update.<br/>__*Default*__: false
 **schedule**? | <code>[Schedule](#aws-cdk-aws-events-schedule)</code> | run the task with defined schedule.<br/>__*Default*__: no shedule
-**securityGroup**? | <code>[SecurityGroup](#aws-cdk-aws-ec2-securitygroup)</code> | fargate security group.<br/>__*Default*__: create a default security group
+**securityGroup**? | <code>[ISecurityGroup](#aws-cdk-aws-ec2-isecuritygroup)</code> | fargate security group.<br/>__*Default*__: create a default security group
 **vpc**? | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | The VPC for the Amazon ECS task.<br/>__*Default*__: create a new VPC or use existing one
 
 

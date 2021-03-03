@@ -63,7 +63,7 @@ export interface RunTaskProps {
    *
    * @default - create a default security group
    */
-  readonly securityGroup?: ec2.SecurityGroup;
+  readonly securityGroup?: ec2.ISecurityGroup;
 }
 
 export class RunTask extends Construct {
@@ -72,7 +72,7 @@ export class RunTask extends Construct {
   /**
    * fargate task security group
    */
-  readonly securityGroup: ec2.SecurityGroup;
+  readonly securityGroup: ec2.ISecurityGroup;
   constructor(scope: Construct, id: string, props: RunTaskProps) {
     super(scope, id);
 
