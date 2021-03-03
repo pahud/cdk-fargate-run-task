@@ -7,6 +7,15 @@ import { Construct } from '@aws-cdk/core';
 import * as cr from '@aws-cdk/custom-resources';
 
 
+/**
+ * Fargate platform version
+ */
+export enum PlatformVersion {
+  V1_13 = '1.13',
+  V1_14 = '1.14',
+  LATEST = 'LATEST',
+}
+
 export interface RunTaskProps {
   /**
    * The VPC for the Amazon ECS task
@@ -43,6 +52,12 @@ export interface RunTaskProps {
    * @default - one week
    */
   readonly logRetention?: RetentionDays;
+  /**
+   * Fargate platform version
+   *
+   * @default LATEST
+   */
+  readonly fargatePlatformVersion?: PlatformVersion;
 }
 
 export class RunTask extends Construct {
@@ -78,6 +93,7 @@ export class RunTask extends Construct {
           cluster: cluster.clusterName,
           taskDefinition: task.taskDefinitionArn,
           launchType: 'FARGATE',
+          platformVersion: props.fargatePlatformVersion,
           networkConfiguration: {
             awsvpcConfiguration: {
               assignPublicIp: 'DISABLED',

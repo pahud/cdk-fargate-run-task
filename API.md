@@ -14,6 +14,13 @@ Name|Description
 [RunTaskProps](#cdk-fargate-run-task-runtaskprops)|*No description*
 
 
+**Enums**
+
+Name|Description
+----|-----------
+[PlatformVersion](#cdk-fargate-run-task-platformversion)|Fargate platform version.
+
+
 
 ## class RunTask  <a id="cdk-fargate-run-task-runtask"></a>
 
@@ -36,6 +43,7 @@ new RunTask(scope: Construct, id: string, props: RunTaskProps)
 * **props** (<code>[RunTaskProps](#cdk-fargate-run-task-runtaskprops)</code>)  *No description*
   * **task** (<code>[FargateTaskDefinition](#aws-cdk-aws-ecs-fargatetaskdefinition)</code>)  The Amazon ECS Task definition for AWS Fargate. 
   * **cluster** (<code>[ICluster](#aws-cdk-aws-ecs-icluster)</code>)  The Amazon ECS Cluster. __*Default*__: create a new cluster
+  * **fargatePlatformVersion** (<code>[PlatformVersion](#cdk-fargate-run-task-platformversion)</code>)  Fargate platform version. __*Default*__: LATEST
   * **logRetention** (<code>[RetentionDays](#aws-cdk-aws-logs-retentiondays)</code>)  Log retention days. __*Default*__: one week
   * **runAtOnce** (<code>boolean</code>)  run it at once(immediately after deployment). __*Default*__: true
   * **runOnResourceUpdate** (<code>boolean</code>)  run the task again on the custom resource update. __*Default*__: false
@@ -65,11 +73,23 @@ Name | Type | Description
 -----|------|-------------
 **task** | <code>[FargateTaskDefinition](#aws-cdk-aws-ecs-fargatetaskdefinition)</code> | The Amazon ECS Task definition for AWS Fargate.
 **cluster**? | <code>[ICluster](#aws-cdk-aws-ecs-icluster)</code> | The Amazon ECS Cluster.<br/>__*Default*__: create a new cluster
+**fargatePlatformVersion**? | <code>[PlatformVersion](#cdk-fargate-run-task-platformversion)</code> | Fargate platform version.<br/>__*Default*__: LATEST
 **logRetention**? | <code>[RetentionDays](#aws-cdk-aws-logs-retentiondays)</code> | Log retention days.<br/>__*Default*__: one week
 **runAtOnce**? | <code>boolean</code> | run it at once(immediately after deployment).<br/>__*Default*__: true
 **runOnResourceUpdate**? | <code>boolean</code> | run the task again on the custom resource update.<br/>__*Default*__: false
 **schedule**? | <code>[Schedule](#aws-cdk-aws-events-schedule)</code> | run the task with defined schedule.<br/>__*Default*__: no shedule
 **vpc**? | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | The VPC for the Amazon ECS task.<br/>__*Default*__: create a new VPC or use existing one
 
+
+
+## enum PlatformVersion  <a id="cdk-fargate-run-task-platformversion"></a>
+
+Fargate platform version.
+
+Name | Description
+-----|-----
+**V1_13** |
+**V1_14** |
+**LATEST** |
 
 
