@@ -11,8 +11,8 @@ import * as cr from '@aws-cdk/custom-resources';
  * Fargate platform version
  */
 export enum PlatformVersion {
-  V1_13 = '1.13',
-  V1_14 = '1.14',
+  V1_3_0 = '1.3.0',
+  V1_4_0 = '1.4.0',
   LATEST = 'LATEST',
 }
 

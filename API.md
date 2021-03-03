@@ -88,8 +88,8 @@ Fargate platform version.
 
 Name | Description
 -----|-----
-**V1_13** |
-**V1_14** |
+**V1_3_0** |
+**V1_4_0** |
 **LATEST** |
 
 
