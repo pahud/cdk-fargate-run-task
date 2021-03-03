@@ -28,6 +28,12 @@ export interface RunTaskProps {
    */
   readonly runAtOnce?: boolean;
   /**
+   * run the task again on the custom resource update
+   *
+   * @default false
+   */
+  readonly runOnResourceUpdate?: boolean;
+  /**
    * run the task with defined schedule
    * @default - no shedule
    */
@@ -85,7 +91,7 @@ export class RunTask extends Construct {
       };
       const runTaskResource = new cr.AwsCustomResource(this, 'EcsRunTask', {
         onCreate: onEvent,
-        onUpdate: onEvent,
+        onUpdate: props.runOnResourceUpdate ? onEvent : undefined,
         policy: cr.AwsCustomResourcePolicy.fromSdkCalls({ resources: [task.taskDefinitionArn] }),
         logRetention: props.logRetention ?? RetentionDays.ONE_WEEK,
       });
@@ -93,7 +99,6 @@ export class RunTask extends Construct {
       // allow lambda from custom resource to iam:PassRole on the ecs task role and execution role
       task.taskRole.grantPassRole(runTaskResource.grantPrincipal);
       if (task.executionRole) task.executionRole.grantPassRole(runTaskResource.grantPrincipal);
-      // new CfnOutput(stack, `TaskDefinitionArn-${id}`, { value: task.taskDefinitionArn });
     }
 
   }

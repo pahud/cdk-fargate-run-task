@@ -2115,9 +2115,9 @@ concat-stream@^2.0.0:
     typedarray "^0.0.6"
 
 constructs@^3.2.0:
-  version "3.3.48"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.48.tgz#56446b7bd8da8023f33a2e4c1bc7d2df3971e6eb"
-  integrity sha512-5AKrTtmiioQWloJ3WRFZb0/uR1lrRboaVE9go++XZltvRnZkN2/kQjaZ0gtFxynU5u5k9mWVtk8mNcgJ9yoRbQ==
+  version "3.3.50"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.3.50.tgz#3c473da46b7fa4893454ad149bfa99f1e920939a"
+  integrity sha512-7Yyrpamdp86WIZAmExsH5Ay+yNECnR20cRsZbPQu/HBSGAZzD6wExDJoxrkQEYXDvjVg4e9NEbe+0CJX35WWbA==
 
 contains-path@^0.1.0:
   version "0.1.0"
@@ -4367,9 +4367,9 @@ jsii-diff@^1.16.0:
     yargs "^16.2.0"
 
 jsii-docgen@^1.4.117:
-  version "1.8.60"
-  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-1.8.60.tgz#5a6d1628ebf63cc0786eda934a5fb59cc3c207cf"
-  integrity sha512-afNkLMt/P9PDZ9UpkwYwqf/EzoWb3x8jUcOrNVP/aU0THE8Si1xqStwPiBq63UnqmA0dDkKz3SnKE2y6DIgapQ==
+  version "1.8.61"
+  resolved "https://registry.yarnpkg.com/jsii-docgen/-/jsii-docgen-1.8.61.tgz#e0a379268d50a640139b1b99e0c8671be5f776d6"
+  integrity sha512-LvF/uHH15lVdTu+Iq9YcZ92rgqdAPfMVZGdB6NOQrnUOGx4OGJh3J6d7fLLbGYE6coQEqSoq6MbhJzfCfNuhaA==
   dependencies:
     "@jsii/spec" "^1.16.0"
     fs-extra "^9.0.1"
@@ -5386,10 +5386,10 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.16.29:
-  version "0.16.29"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.16.29.tgz#f185218ca9c934de74497fd64bb8e40212ec0ccf"
-  integrity sha512-HlvOwWkhjN+X0aGgYArGPk4bS2NFx1+177ppy5W5PLRzNhbCExCQJDEwBqDXg1k8gXRRdO8EQZ3ok/Xk0jwWiQ==
+projen@^0.16.31:
+  version "0.16.31"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.16.31.tgz#9271a7ec0d85768cbe8291aa2eab2b58a0c581cf"
+  integrity sha512-JwWwd9SVsdLJgty8hrEmRJ6wN2tWPFElCy6dTa13G8s75y/tq/qd8VZ28HTxNWr/q2n9MkKa4ua1YUZ+HsMgVg==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.0"

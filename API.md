@@ -38,6 +38,7 @@ new RunTask(scope: Construct, id: string, props: RunTaskProps)
   * **cluster** (<code>[ICluster](#aws-cdk-aws-ecs-icluster)</code>)  The Amazon ECS Cluster. __*Default*__: create a new cluster
   * **logRetention** (<code>[RetentionDays](#aws-cdk-aws-logs-retentiondays)</code>)  Log retention days. __*Default*__: one week
   * **runAtOnce** (<code>boolean</code>)  run it at once(immediately after deployment). __*Default*__: true
+  * **runOnResourceUpdate** (<code>boolean</code>)  run the task again on the custom resource update. __*Default*__: false
   * **schedule** (<code>[Schedule](#aws-cdk-aws-events-schedule)</code>)  run the task with defined schedule. __*Default*__: no shedule
   * **vpc** (<code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code>)  The VPC for the Amazon ECS task. __*Default*__: create a new VPC or use existing one
 
@@ -66,6 +67,7 @@ Name | Type | Description
 **cluster**? | <code>[ICluster](#aws-cdk-aws-ecs-icluster)</code> | The Amazon ECS Cluster.<br/>__*Default*__: create a new cluster
 **logRetention**? | <code>[RetentionDays](#aws-cdk-aws-logs-retentiondays)</code> | Log retention days.<br/>__*Default*__: one week
 **runAtOnce**? | <code>boolean</code> | run it at once(immediately after deployment).<br/>__*Default*__: true
+**runOnResourceUpdate**? | <code>boolean</code> | run the task again on the custom resource update.<br/>__*Default*__: false
 **schedule**? | <code>[Schedule](#aws-cdk-aws-events-schedule)</code> | run the task with defined schedule.<br/>__*Default*__: no shedule
 **vpc**? | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | The VPC for the Amazon ECS task.<br/>__*Default*__: create a new VPC or use existing one
 

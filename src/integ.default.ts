@@ -27,8 +27,8 @@ export class IntegTesting {
       logging: new ecs.AwsLogDriver({
         streamPrefix: 'Ping',
         logGroup: new LogGroup(stack, 'LogGroup', {
-          logGroupName: `${stack.stackName}LogGroup`,
           retention: RetentionDays.ONE_DAY,
+          removalPolicy: cdk.RemovalPolicy.DESTROY,
         }),
       }),
     });

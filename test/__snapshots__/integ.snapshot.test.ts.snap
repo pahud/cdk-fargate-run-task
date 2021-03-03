@@ -176,13 +176,12 @@ Object {
       "Type": "AWS::IAM::Policy",
     },
     "LogGroupF5B46931": Object {
-      "DeletionPolicy": "Retain",
+      "DeletionPolicy": "Delete",
       "Properties": Object {
-        "LogGroupName": "run-task-demo-stackLogGroup",
         "RetentionInDays": 1,
       },
       "Type": "AWS::Logs::LogGroup",
-      "UpdateReplacePolicy": "Retain",
+      "UpdateReplacePolicy": "Delete",
     },
     "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": Object {
       "DependsOn": Array [
@@ -393,37 +392,6 @@ Object {
             "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
             "Arn",
           ],
-        },
-        "Update": Object {
-          "action": "runTask",
-          "parameters": Object {
-            "cluster": Object {
-              "Ref": "RunDemoTaskOnceCluster1F2A1193",
-            },
-            "launchType": "FARGATE",
-            "networkConfiguration": Object {
-              "awsvpcConfiguration": Object {
-                "assignPublicIp": "DISABLED",
-                "subnets": Array [
-                  Object {
-                    "Ref": "RunDemoTaskOnceVpcPrivateSubnet1Subnet5876C593",
-                  },
-                  Object {
-                    "Ref": "RunDemoTaskOnceVpcPrivateSubnet2Subnet34616E0B",
-                  },
-                ],
-              },
-            },
-            "taskDefinition": Object {
-              "Ref": "Task79114B6B",
-            },
-          },
-          "physicalResourceId": Object {
-            "id": Object {
-              "Ref": "Task79114B6B",
-            },
-          },
-          "service": "ECS",
         },
       },
       "Type": "Custom::AWS",
