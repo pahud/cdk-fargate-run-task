@@ -3,18 +3,6 @@
 exports[`integ snapshot validation 1`] = `
 Object {
   "Parameters": Object {
-    "AssetParameters4a3609ad912843e581892f37ae9d6fb0fa1648b547693aaa562b0119452b8956ArtifactHashD15A2D11": Object {
-      "Description": "Artifact hash for asset \\"4a3609ad912843e581892f37ae9d6fb0fa1648b547693aaa562b0119452b8956\\"",
-      "Type": "String",
-    },
-    "AssetParameters4a3609ad912843e581892f37ae9d6fb0fa1648b547693aaa562b0119452b8956S3Bucket72B03BC9": Object {
-      "Description": "S3 bucket for asset \\"4a3609ad912843e581892f37ae9d6fb0fa1648b547693aaa562b0119452b8956\\"",
-      "Type": "String",
-    },
-    "AssetParameters4a3609ad912843e581892f37ae9d6fb0fa1648b547693aaa562b0119452b8956S3VersionKey520B7554": Object {
-      "Description": "S3 key for asset version \\"4a3609ad912843e581892f37ae9d6fb0fa1648b547693aaa562b0119452b8956\\"",
-      "Type": "String",
-    },
     "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24ArtifactHashBA91B77F": Object {
       "Description": "Artifact hash for asset \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
       "Type": "String",
@@ -27,6 +15,18 @@ Object {
       "Description": "S3 key for asset version \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
       "Type": "String",
     },
+    "AssetParametersa5a55f40f05c1031f30cc935c76b58b0b7dbc81e70845edf4ef615d6580ae04dArtifactHashBC261AD6": Object {
+      "Description": "Artifact hash for asset \\"a5a55f40f05c1031f30cc935c76b58b0b7dbc81e70845edf4ef615d6580ae04d\\"",
+      "Type": "String",
+    },
+    "AssetParametersa5a55f40f05c1031f30cc935c76b58b0b7dbc81e70845edf4ef615d6580ae04dS3BucketDDD15B67": Object {
+      "Description": "S3 bucket for asset \\"a5a55f40f05c1031f30cc935c76b58b0b7dbc81e70845edf4ef615d6580ae04d\\"",
+      "Type": "String",
+    },
+    "AssetParametersa5a55f40f05c1031f30cc935c76b58b0b7dbc81e70845edf4ef615d6580ae04dS3VersionKey76284988": Object {
+      "Description": "S3 key for asset version \\"a5a55f40f05c1031f30cc935c76b58b0b7dbc81e70845edf4ef615d6580ae04d\\"",
+      "Type": "String",
+    },
   },
   "Resources": Object {
     "AWS679f53fac002430cb0da5b7982bd22872D164C4C": Object {
@@ -37,7 +37,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters4a3609ad912843e581892f37ae9d6fb0fa1648b547693aaa562b0119452b8956S3Bucket72B03BC9",
+            "Ref": "AssetParametersa5a55f40f05c1031f30cc935c76b58b0b7dbc81e70845edf4ef615d6580ae04dS3BucketDDD15B67",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -50,7 +50,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters4a3609ad912843e581892f37ae9d6fb0fa1648b547693aaa562b0119452b8956S3VersionKey520B7554",
+                          "Ref": "AssetParametersa5a55f40f05c1031f30cc935c76b58b0b7dbc81e70845edf4ef615d6580ae04dS3VersionKey76284988",
                         },
                       ],
                     },
@@ -63,7 +63,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters4a3609ad912843e581892f37ae9d6fb0fa1648b547693aaa562b0119452b8956S3VersionKey520B7554",
+                          "Ref": "AssetParametersa5a55f40f05c1031f30cc935c76b58b0b7dbc81e70845edf4ef615d6580ae04dS3VersionKey76284988",
                         },
                       ],
                     },
@@ -372,43 +372,39 @@ Object {
       ],
       "Properties": Object {
         "Create": Object {
-          "action": "runTask",
-          "parameters": Object {
-            "cluster": Object {
-              "Ref": "RunDemoTaskOnceCluster1F2A1193",
-            },
-            "launchType": "FARGATE",
-            "networkConfiguration": Object {
-              "awsvpcConfiguration": Object {
-                "assignPublicIp": "DISABLED",
-                "securityGroups": Array [
-                  Object {
-                    "Fn::GetAtt": Array [
-                      "RunDemoTaskOnceFargateSecurityGroup33BD37E6",
-                      "GroupId",
-                    ],
-                  },
-                ],
-                "subnets": Array [
-                  Object {
-                    "Ref": "RunDemoTaskOnceVpcPrivateSubnet1Subnet5876C593",
-                  },
-                  Object {
-                    "Ref": "RunDemoTaskOnceVpcPrivateSubnet2Subnet34616E0B",
-                  },
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"ECS\\",\\"action\\":\\"runTask\\",\\"parameters\\":{\\"cluster\\":\\"",
+              Object {
+                "Ref": "RunDemoTaskOnceCluster1F2A1193",
+              },
+              "\\",\\"taskDefinition\\":\\"",
+              Object {
+                "Ref": "Task79114B6B",
+              },
+              "\\",\\"launchType\\":\\"FARGATE\\",\\"networkConfiguration\\":{\\"awsvpcConfiguration\\":{\\"assignPublicIp\\":\\"DISABLED\\",\\"subnets\\":[\\"",
+              Object {
+                "Ref": "RunDemoTaskOnceVpcPrivateSubnet1Subnet5876C593",
+              },
+              "\\",\\"",
+              Object {
+                "Ref": "RunDemoTaskOnceVpcPrivateSubnet2Subnet34616E0B",
+              },
+              "\\"],\\"securityGroups\\":[\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "RunDemoTaskOnceFargateSecurityGroup33BD37E6",
+                  "GroupId",
                 ],
               },
-            },
-            "taskDefinition": Object {
-              "Ref": "Task79114B6B",
-            },
-          },
-          "physicalResourceId": Object {
-            "id": Object {
-              "Ref": "Task79114B6B",
-            },
-          },
-          "service": "ECS",
+              "\\"]}}},\\"physicalResourceId\\":{\\"id\\":\\"",
+              Object {
+                "Ref": "Task79114B6B",
+              },
+              "\\"}}",
+            ],
+          ],
         },
         "InstallLatestAwsSdk": true,
         "ServiceToken": Object {
