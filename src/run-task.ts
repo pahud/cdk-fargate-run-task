@@ -70,6 +70,10 @@ export class RunTask extends Construct {
   readonly vpc: ec2.IVpc;
   readonly cluster: ecs.ICluster;
   /**
+   * The custom resource of the runOnce execution
+   */
+  readonly runOnceResource?: cr.AwsCustomResource;
+  /**
    * fargate task security group
    */
   readonly securityGroup: ec2.ISecurityGroup;
@@ -123,6 +127,7 @@ export class RunTask extends Construct {
         policy: cr.AwsCustomResourcePolicy.fromSdkCalls({ resources: [task.taskDefinitionArn] }),
         logRetention: props.logRetention ?? RetentionDays.ONE_WEEK,
       });
+      this.runOnceResource = runTaskResource;
 
       // allow lambda from custom resource to iam:PassRole on the ecs task role and execution role
       task.taskRole.grantPassRole(runTaskResource.grantPrincipal);
