@@ -64,6 +64,12 @@ export interface RunTaskProps {
    * @default - create a default security group
    */
   readonly securityGroup?: ec2.ISecurityGroup;
+  /**
+   * The capacity provider strategy to run the fargate task;
+   *
+   * @default - No capacity provider strategy defined. Use LaunchType instead.
+   */
+  readonly capacityProviderStrategy?: ecs.CapacityProviderStrategy[];
 }
 
 export class RunTask extends Construct {
@@ -80,9 +86,11 @@ export class RunTask extends Construct {
   constructor(scope: Construct, id: string, props: RunTaskProps) {
     super(scope, id);
 
-    // const stack = Stack.of(this);
     const vpc = props.vpc ?? props.cluster ? props.cluster!.vpc : getOrCreateVpc(this);
-    const cluster = props.cluster ?? new ecs.Cluster(this, 'Cluster', { vpc });
+    const cluster = props.cluster ?? new ecs.Cluster(this, 'Cluster', {
+      vpc,
+      capacityProviders: ['FARGATE', 'FARGATE_SPOT'],
+    });
     const task = props.task;
     this.vpc = vpc;
     this.cluster = cluster;
@@ -107,7 +115,8 @@ export class RunTask extends Construct {
         parameters: {
           cluster: cluster.clusterName,
           taskDefinition: task.taskDefinitionArn,
-          launchType: 'FARGATE',
+          capacityProviderStrategy: props.capacityProviderStrategy,
+          launchType: props.capacityProviderStrategy ? undefined : 'FARGATE',
           platformVersion: props.fargatePlatformVersion,
           networkConfiguration: {
             awsvpcConfiguration: {

@@ -34,7 +34,15 @@ export class IntegTesting {
     });
 
     // deploy and run this task once
-    const runTaskAtOnce = new RunTask(stack, 'RunDemoTaskOnce', { task });
+    const runTaskAtOnce = new RunTask(stack, 'RunDemoTaskOnce', {
+      task,
+      capacityProviderStrategy: [
+        {
+          capacityProvider: 'FARGATE_SPOT',
+          weight: 1,
+        },
+      ],
+    });
 
     // or run it with schedule(every hour 0min)
     new RunTask(stack, 'RunDemoTaskEveryHour', {

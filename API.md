@@ -42,6 +42,7 @@ new RunTask(scope: Construct, id: string, props: RunTaskProps)
 * **id** (<code>string</code>)  *No description*
 * **props** (<code>[RunTaskProps](#cdk-fargate-run-task-runtaskprops)</code>)  *No description*
   * **task** (<code>[FargateTaskDefinition](#aws-cdk-aws-ecs-fargatetaskdefinition)</code>)  The Amazon ECS Task definition for AWS Fargate. 
+  * **capacityProviderStrategy** (<code>Array<[CapacityProviderStrategy](#aws-cdk-aws-ecs-capacityproviderstrategy)></code>)  The capacity provider strategy to run the fargate task; __*Default*__: No capacity provider strategy defined. Use LaunchType instead.
   * **cluster** (<code>[ICluster](#aws-cdk-aws-ecs-icluster)</code>)  The Amazon ECS Cluster. __*Default*__: create a new cluster
   * **fargatePlatformVersion** (<code>[PlatformVersion](#cdk-fargate-run-task-platformversion)</code>)  Fargate platform version. __*Default*__: LATEST
   * **logRetention** (<code>[RetentionDays](#aws-cdk-aws-logs-retentiondays)</code>)  Log retention days. __*Default*__: one week
@@ -61,6 +62,7 @@ Name | Type | Description
 **cluster** | <code>[ICluster](#aws-cdk-aws-ecs-icluster)</code> | <span></span>
 **securityGroup** | <code>[ISecurityGroup](#aws-cdk-aws-ec2-isecuritygroup)</code> | fargate task security group.
 **vpc** | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | <span></span>
+**runOnceResource**? | <code>[AwsCustomResource](#aws-cdk-custom-resources-awscustomresource)</code> | The custom resource of the runOnce execution.<br/>__*Optional*__
 
 
 
@@ -74,6 +76,7 @@ Name | Type | Description
 Name | Type | Description 
 -----|------|-------------
 **task** | <code>[FargateTaskDefinition](#aws-cdk-aws-ecs-fargatetaskdefinition)</code> | The Amazon ECS Task definition for AWS Fargate.
+**capacityProviderStrategy**? | <code>Array<[CapacityProviderStrategy](#aws-cdk-aws-ecs-capacityproviderstrategy)></code> | The capacity provider strategy to run the fargate task;<br/>__*Default*__: No capacity provider strategy defined. Use LaunchType instead.
 **cluster**? | <code>[ICluster](#aws-cdk-aws-ecs-icluster)</code> | The Amazon ECS Cluster.<br/>__*Default*__: create a new cluster
 **fargatePlatformVersion**? | <code>[PlatformVersion](#cdk-fargate-run-task-platformversion)</code> | Fargate platform version.<br/>__*Default*__: LATEST
 **logRetention**? | <code>[RetentionDays](#aws-cdk-aws-logs-retentiondays)</code> | Log retention days.<br/>__*Default*__: one week
