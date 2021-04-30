@@ -26,7 +26,7 @@ Name|Description
 
 
 
-__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable)
+__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [IConnectable](#aws-cdk-aws-ec2-iconnectable)
 __Extends__: [Construct](#aws-cdk-core-construct)
 
 ### Initializer
@@ -60,6 +60,7 @@ new RunTask(scope: Construct, id: string, props: RunTaskProps)
 Name | Type | Description 
 -----|------|-------------
 **cluster** | <code>[ICluster](#aws-cdk-aws-ecs-icluster)</code> | <span></span>
+**connections** | <code>[Connections](#aws-cdk-aws-ec2-connections)</code> | makes RunTask "connectable".
 **securityGroup** | <code>[ISecurityGroup](#aws-cdk-aws-ec2-isecuritygroup)</code> | fargate task security group.
 **vpc** | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | <span></span>
 **runOnceResource**? | <code>[AwsCustomResource](#aws-cdk-custom-resources-awscustomresource)</code> | The custom resource of the runOnce execution.<br/>__*Optional*__
