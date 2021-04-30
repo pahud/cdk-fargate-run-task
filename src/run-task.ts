@@ -72,7 +72,7 @@ export interface RunTaskProps {
   readonly capacityProviderStrategy?: ecs.CapacityProviderStrategy[];
 }
 
-export class RunTask extends Construct {
+export class RunTask extends Construct implements ec2.IConnectable {
   readonly vpc: ec2.IVpc;
   readonly cluster: ecs.ICluster;
   /**
@@ -83,6 +83,10 @@ export class RunTask extends Construct {
    * fargate task security group
    */
   readonly securityGroup: ec2.ISecurityGroup;
+  /**
+   * makes RunTask "connectable"
+   */
+  readonly connections: ec2.Connections;
   constructor(scope: Construct, id: string, props: RunTaskProps) {
     super(scope, id);
 
@@ -95,6 +99,7 @@ export class RunTask extends Construct {
     this.vpc = vpc;
     this.cluster = cluster;
     this.securityGroup = props.securityGroup ?? new ec2.SecurityGroup(this, 'FargateSecurityGroup', { vpc });
+    this.connections = new ec2.Connections({ securityGroups: [this.securityGroup] });
 
     if (props.schedule) {
       new Rule(this, 'ScheduleRule', {
