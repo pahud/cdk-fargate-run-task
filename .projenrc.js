@@ -1,12 +1,13 @@
-const { AwsCdkConstructLibrary } = require('projen');
+const { AwsCdkConstructLibrary, DependenciesUpgradeMechanism } = require('projen');
+
+const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
 const project = new AwsCdkConstructLibrary({
   authorAddress: 'pahudnet@gmail.com',
   authorName: 'Pahud',
   cdkVersion: '1.73.0',
   name: 'cdk-fargate-run-task',
-  releaseBranches: ['main'],
-  defaultReleaseBranch: ['main'],
+  defaultReleaseBranch: 'main',
   description: 'Define and run container tasks on AWS Fargate immediately or with schedule',
   repository: 'https://github.com/pahud/cdk-fargate-run-task.git',
   cdkDependencies: [
@@ -26,7 +27,16 @@ const project = new AwsCdkConstructLibrary({
     distName: 'cdk-fargate-run-task',
     module: 'cdk_fargate_run_task',
   },
-  dependabot: false,
+  depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+    workflowOptions: {
+      labels: ['auto-approve', 'auto-merge'],
+      secret: AUTOMATION_TOKEN,
+    },
+  }),
+  autoApproveOptions: {
+    secret: 'GITHUB_TOKEN',
+    allowedUsernames: ['pahud'],
+  },
   keywords: [
     'cdk',
     'fargate',
