@@ -363,13 +363,20 @@ Object {
       "Type": "AWS::Events::Rule",
     },
     "RunDemoTaskOnceCluster1F2A1193": Object {
+      "Type": "AWS::ECS::Cluster",
+    },
+    "RunDemoTaskOnceClusterFB5B45BD": Object {
       "Properties": Object {
         "CapacityProviders": Array [
           "FARGATE",
           "FARGATE_SPOT",
         ],
+        "Cluster": Object {
+          "Ref": "RunDemoTaskOnceCluster1F2A1193",
+        },
+        "DefaultCapacityProviderStrategy": Array [],
       },
-      "Type": "AWS::ECS::Cluster",
+      "Type": "AWS::ECS::ClusterCapacityProviderAssociations",
     },
     "RunDemoTaskOnceEcsRunTaskC9CB273B": Object {
       "DeletionPolicy": "Delete",
